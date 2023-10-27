@@ -1,0 +1,28 @@
+{
+  "name": "stockcar-frontend",
+  "version": "1.0.0",
+  "description": "Ce projet contient le code de la partie Front du projet Stock Car. Il est composé de code HTML, CSS et JavaScript intéragissant avec la partie Back.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^4.3.10",
+    "global": "^4.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "jsdom": "^22.1.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^10.2.0",
+    "node-fetch": "^3.3.2",
+    "nyc": "^15.1.0",
+    "sinon": "^17.0.0"
+  }
+}
