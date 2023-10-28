@@ -428,6 +428,7 @@ class Voiture {
 
 
 module.exports = {
+	'config': config,
 	'accueil':accueil,
 	'afficherTableauListeVoitures':afficherTableauListeVoitures,
 	'effacerFormulaire':effacerFormulaire,
