@@ -74,6 +74,7 @@ describe ("Stockcar", function(){
             // Add assertions based on how errors are handled in your code
         });
     });
+    });
 
     describe("effacerFormulaire", function(){
     } );
@@ -102,8 +103,6 @@ describe ("Stockcar", function(){
     });
 
     describe("cacherFormulaireCreation", function() {
-
-
 
     });
     describe('paginer', function () {
@@ -137,30 +136,28 @@ describe ("Stockcar", function(){
     describe('genererPagination', function () {
 
         });
+
     describe('supprimerVoiture', () => {
-        let fetchStub;
+           let fetchStub;
 
-        beforeEach(() => {
-            fetchStub = sinon.stub(global, 'fetch');
-        });
+           beforeEach(() => {
+               fetchStub = sinon.stub(global, 'fetch');
+           });
 
-        afterEach(() => {
-            fetchStub.restore();
-        });
-
-
-        it('should handle errors when deleting a car', async () => {
-            fetchStub.returns(Promise.resolve({ ok: false }));
-
-            const expectedId = 123; // Mock an ID for testing
-
-            await stockcar.supprimerVoiture(expectedId);
+           afterEach(() => {
+               fetchStub.restore();
+           });
 
 
-        });
+           it('should handle errors when deleting a car', async () => {
+               fetchStub.returns(Promise.resolve({ ok: false }));
 
+               const expectedId = 123; // Mock an ID for testing
 
-    });
+               await stockcar.supprimerVoiture(expectedId);
+
+           });
+       });
 
 /*
     describe('afficherFormulaireCreation', () => {
@@ -193,4 +190,5 @@ describe ("Stockcar", function(){
     });
 
 */
+
 });
