@@ -22,9 +22,9 @@ const sampleVoiture = JSON.stringify({
 
 
 describe ("Stockcar", function(){
-    describe('accueil', function () {
 
-    });
+
+
     describe("afficherTableauListeVoitures", function(){
         let fetchStub;
 
