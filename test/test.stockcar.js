@@ -20,6 +20,17 @@ const sampleVoiture = JSON.stringify({
     id: 1,
 });
 
+const forms = new JSDOM(`
+      <form>
+          <input id="marque" value="Audi">
+          <input id="modele" value="R3">
+          <input id="finition" value="Sportback">
+          <input id="carburant" value="Essence">
+          <input id="km" value="10000">
+          <input id="annee" value="2020">
+          <input id="prix" value="30000">
+      </form>
+`);
 
 describe ("Stockcar", function(){
 
@@ -76,8 +87,54 @@ describe ("Stockcar", function(){
     });
     });
 
-    describe("effacerFormulaire", function(){
-    } );
+    describe('effacerFormulaire', function() {
+          it('Vider le formulaire', function() {
+            global.document = forms.window.document;
+            stockcar.effacerFormulaire();
+            chai.assert.equal(document.getElementById('marque').value, '');
+            chai.assert.equal(document.getElementById('modele').value, '');
+            chai.assert.equal(document.getElementById('finition').value, '');
+            chai.assert.equal(document.getElementById('carburant').value, '');
+            chai.assert.equal(document.getElementById('km').value, '');
+            chai.assert.equal(document.getElementById('annee').value, '');
+            chai.assert.equal(document.getElementById('prix').value, '');
+          });
+    });
+    describe("ajouterVoiture", function() {
+            let fetchStub;
+                beforeEach(() => {
+                    fetchStub = sinon.stub(global, 'fetch');
+                });
+                afterEach(() => {
+                    fetchStub.restore();
+            });
+            it('Ajouter une voiture sur la liste', async function() {
+                fetchStub.resolves({
+                  ok: true,
+                  json: () => ({ succes: true })
+                });
+                global.document = {
+                  getElementById: function(id) {
+                    return { value: 'testValue' };
+                  }
+                };
+                await stockcar.ajouterVoiture();
+                chai.assert(fetchStub.calledOnce);
+                const expectedUrl = 'http://localhost:8080/esieaBack/rest/voiture/add/';
+                chai.assert.equal(fetchStub.firstCall.args[0], expectedUrl);
+
+                chai.assert.deepEqual(JSON.parse(fetchStub.firstCall.args[1].body), {
+                  marque: 'testValue',
+                  modele: 'testValue',
+                  finition: 'testValue',
+                  carburant: 'testValue',
+                  km: 'testValue',
+                  annee: 'testValue',
+                  prix: 'testValue'
+                });
+                fetchStub.restore();
+            });
+        });
 
 
 
@@ -190,5 +247,40 @@ describe ("Stockcar", function(){
     });
 
 */
+
+
+   /*describe('rechercher', function() {
+           let fetchStub;
+           beforeEach(() => {
+               fetchStub = sinon.stub(global, 'fetch');
+           });
+           afterEach(() => {
+               fetchStub.restore();
+           });
+
+           it('should make a fetch request with the correct URL', async function() {
+               const mini = 1;
+               const saisie = 'test'; // You can change this to any desired value for testing
+
+               document.body.innerHTML = `<input id="saisieRecherche" value="${saisie}">`;
+
+               const responseData = {
+                   voitures: [], // Mocking an empty list of cars
+                   volume: 0
+               };
+               fetchStub.returns(Promise.resolve({
+                   ok: true,
+                   json: () => Promise.resolve(responseData)
+               }));
+
+               await stockcar.rechercher(mini);
+
+               const expectedUrl = `${config.urlBack}voiture/get/${saisie}/${mini - 1}/${config.ligneParPage}`;
+               assert.equal(fetchStub.firstCall.args[0], expectedUrl);
+           });
+   });*/
+
+
+
 
 });
