@@ -36,6 +36,7 @@ describe ("Stockcar", function(){
 
 
 
+
     describe("afficherTableauListeVoitures", function(){
         let fetchStub;
 
@@ -159,9 +160,43 @@ describe ("Stockcar", function(){
     });
     });
 
-    describe("cacherFormulaireCreation", function() {
+    describe("cacherFormulaireCreation", function () {
+        let dom;
 
+        beforeEach(() => {
+            // Set up the DOM with necessary elements
+            dom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
+            global.document = dom.window.document;
+        });
+
+        it('should hide the "nouvelle" element and display other elements', function () {
+            // Set up the DOM with necessary elements
+            document.body.innerHTML = `
+                <div id="nouvelle" style="display: block;"></div>
+                <div id="fiche" style="display: none;"></div>
+                <div id="recherche" style="display: none;"></div>
+                <div class="pagination" style="display: none;"></div>
+            `;
+
+            stockcar.cacherFormulaireCreation();
+
+            // Check if the 'nouvelle' element is hidden
+            const nouvelleElement = document.getElementById('nouvelle');
+            assert.equal(nouvelleElement.style.display, 'none');
+
+            // Check if the other elements are displayed
+            const ficheElement = document.getElementById('fiche');
+            assert.equal(ficheElement.style.display, 'block');
+
+            const rechercheElement = document.getElementById('recherche');
+            assert.equal(rechercheElement.style.display, 'block');
+
+            const paginationElement = document.querySelector('div.pagination');
+            assert.equal(paginationElement.style.display, 'block');
+        });
     });
+
+
     describe('paginer', function () {
 
     });
@@ -215,6 +250,42 @@ describe ("Stockcar", function(){
 
            });
        });
+
+    describe('selectionnerPage', function () {
+        let dom;
+
+        beforeEach(function () {
+            // Reset the DOM before each test
+            dom = new JSDOM('<!DOCTYPE html><html><body><div id="pages"><a value="1"></a><a value="2"></a></div><div class="pagination"><a class="previous"></a><a class="next"></a></div></body></html>');
+            global.document = dom.window.document;
+
+            dom.window.document.querySelector("div#pages a[value='1']").classList.add('active');
+            dom.window.document.querySelector("div.pagination a.previous").classList.remove('disabled');
+            dom.window.document.querySelector("div.pagination a.previous").setAttribute('href', '#');
+            dom.window.document.querySelector("div.pagination a.previous").setAttribute('onclick', 'paginer(0)');
+            dom.window.document.querySelector("div.pagination a.next").classList.remove('disabled');
+            dom.window.document.querySelector("div.pagination a.next").setAttribute('href', '#');
+            dom.window.document.querySelector("div.pagination a.next").setAttribute('onclick', 'paginer(2)');
+        });
+
+        it('should set the active class for the specified page', function () {
+            stockcar.selectionnerPage(2, 10);
+            assert.isTrue(dom.window.document.querySelector("div#pages a[value='2']").classList.contains('active'));
+        });
+
+        it('should disable previous button for the first page', function () {
+            stockcar.selectionnerPage(1, 10);
+            assert.isTrue(dom.window.document.querySelector("div.pagination a.previous").classList.contains('disabled'));
+            assert.isNotOk(dom.window.document.querySelector("div.pagination a.previous").getAttribute('href'));
+        });
+
+        it('should enable next button for pages other than the last', function () {
+            stockcar.selectionnerPage(1, 2);
+            assert.isFalse(dom.window.document.querySelector("div.pagination a.next").classList.contains('disabled'));
+            assert.equal(dom.window.document.querySelector("div.pagination a.next").getAttribute('href'), '#');
+            assert.equal(dom.window.document.querySelector("div.pagination a.next").getAttribute('onclick'), 'paginer(2)');
+        });
+    });
 
 /*
     describe('afficherFormulaireCreation', () => {
