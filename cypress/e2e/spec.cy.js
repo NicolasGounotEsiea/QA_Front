@@ -10,7 +10,6 @@ describe('UTF-8 Encoding Test', () => {
     cy.document().then((doc) => {
       const textContent = doc.body.innerText
 
-      // Function to check if the string is valid UTF-8
       function isUTF8(str) {
         try {
           new TextDecoder('utf-8').decode(new TextEncoder().encode(str))
@@ -20,7 +19,6 @@ describe('UTF-8 Encoding Test', () => {
         }
       }
 
-      // Check if the entire page's text content is in valid UTF-8 encoding
       expect(isUTF8(textContent)).to.equal(true)
     })
   })
@@ -116,15 +114,14 @@ describe('Car Management Application E2E Tests', () => {
 
 })
 describe('Car Management Application - Responsive Testing', () => {
-  const viewports = ['iphone-6', 'ipad-2', 'macbook-13', 'macbook-15'] // Updated with a larger screen
+  const viewports = ['iphone-6', 'ipad-2', 'macbook-13', 'macbook-15']
 
   viewports.forEach((viewport) => {
     it(`Adapts well to ${viewport}`, () => {
       cy.viewport(viewport)
-      cy.visit('http://localhost:8080/esieaFront/') // Replace with the path to your HTML file
+      cy.visit('http://localhost:8080/esieaFront/')
 
-      // Perform assertions based on the responsiveness
-      // Check elements and layout as per the specific viewport
+
       switch (viewport) {
         case 'iphone-6':
           cy.get('#logo').should('exist')
@@ -136,15 +133,17 @@ describe('Car Management Application - Responsive Testing', () => {
           cy.get('#content').should('exist')
           cy.get('#saisieRecherche').should('be.visible');
           cy.get('.rechercher').should('be.visible');
-          // Add specific assertions for iPad 2
+
           break
         case 'macbook-13':
           cy.get('.pagination').should('exist')
-          // Add specific assertions for 13" MacBook
+          cy.get('.rechercher').should('be.visible');
+
           break
         case 'macbook-15':
           cy.get('#conteneurSection').should('exist')
-          // Add specific assertions for 15" MacBook
+          cy.get('#logo').should('be.visible')
+
           break
 
         default:
