@@ -1,0 +1,23 @@
+{
+    "voitures": [
+      {
+        "marque": "Ford",
+        "modele": "Focus",
+        "finition": "Sport",
+        "carburant": "DIESEL",
+        "km": 50000,
+        "annee": 2018,
+        "prix": 15000
+      },
+      {
+        "marque": "Toyota",
+        "modele": "Corolla",
+        "finition": "Sedan",
+        "carburant": "DIESEL",
+        "km": 30000,
+        "annee": 2020,
+        "prix": 20000
+      }
+    ]
+  }
+  
