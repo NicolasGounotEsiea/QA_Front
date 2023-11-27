@@ -52,44 +52,68 @@ describe('Car Management Application E2E Tests', () => {
           cy.get('#infos').should('be.visible');
           cy.get('#divSupprimer').should('be.visible');
         });
-        it('Simulates user actions', () => {
-            // Trigger the 'ajouterVoiture' function by clicking on the 'Ajouter' button
+      it('Simulates user actions', () => {
+
             cy.get('#nouvelleVoiture').click();
             cy.get('#nouvelle').should('be.visible')
         });
-      // Check form inputs
+
       cy.get('#marque').should('exist')
       cy.get('#modele').should('exist')
-      // ... add similar checks for other form inputs
 
-      // Check buttons
       cy.get('#nouvelleVoiture').should('exist').and('contain', 'Ajouter')
 
 
-      // Check sidebar content
-      //cy.get('#logo').should('be.visible')
-      //cy.contains('#nav', 'Accueil').should('be.visible')
-      //cy.contains('#nav', 'Ajouter une voiture').should('be.visible')
 
-      // Check the search form
-      //cy.get('#saisieRecherche').should('exist')
-      //cy.get('.rechercher').should('exist').and('contain', 'Go')
-
-      // Check if the snackbar elements exist
-      //cy.get('.snackbar').should('have.length', 4)
     })
   })
 
   it('Simulates user actions', () => {
-    // Perform actions, for example, click on a link to simulate navigation
-    cy.contains('#nav', 'Accueil').click()
 
-    // Validate the change or resulting content after the action
-    // Example: Check if the content after navigating to Accueil is visible
+    cy.contains('#nav', 'Accueil').click()
     cy.get('#content').should('be.visible')
   })
 
-  // Add more test cases for different interactions, validations, and edge cases as needed
+   it('Displays car details after clicking on "Détails"', () => {
+     // Click on the "Détails" link for a specific car (replace 5 with the actual car ID)
+     cy.contains('a', 'Détails').click();
+
+     // Validate that the car details section is visible
+     cy.get('#fiche').should('be.visible');
+     cy.get('#infos').should('be.visible');
+     cy.get('#divSupprimer').should('be.visible');
+   });
+     it('Searches for a car and displays results', () => {
+
+       cy.get('#saisieRecherche').type('Toyota');
+       cy.get('.rechercher').click();
+       cy.get('#listeVoiture').should('be.visible');
+
+     });
+
+
+     it('Navigates to "Ajouter une voiture" page', () => {
+
+      cy.contains('#nav', 'Ajouter une voiture').click();
+      cy.get('#nouvelle').invoke('removeAttr', 'style');
+      cy.get('#nouvelleVoiture').click({ force: true });
+  });
+  it('Adds a new car', () => {
+
+    cy.contains('#nav', 'Ajouter une voiture').click();
+    cy.get('#nouvelle').invoke('removeAttr', 'style');
+
+    cy.get('#marque').type('Toyota', { force: true });
+    cy.get('#modele').type('Camry', { force: true });
+    cy.get('#finition').type('LE', { force: true });
+    cy.get('#carburant').select('E', { force: true });
+    cy.get('#km').type('50000', { force: true });
+    cy.get('#annee').type('2022', { force: true });
+    cy.get('#prix').type('25000', { force: true });
+    cy.get('#nouvelleVoiture').click({ force: true });
+  });
+
+
 })
 describe('Car Management Application - Responsive Testing', () => {
   const viewports = ['iphone-6', 'ipad-2', 'macbook-13', 'macbook-15'] // Updated with a larger screen
@@ -105,10 +129,13 @@ describe('Car Management Application - Responsive Testing', () => {
         case 'iphone-6':
           cy.get('#logo').should('exist')
           cy.contains('#nav', 'Accueil').should('exist')
-          // Add specific assertions for iPhone 6
+          cy.get('#logo').should('be.visible')
+
           break
         case 'ipad-2':
           cy.get('#content').should('exist')
+          cy.get('#saisieRecherche').should('be.visible');
+          cy.get('.rechercher').should('be.visible');
           // Add specific assertions for iPad 2
           break
         case 'macbook-13':
@@ -127,3 +154,5 @@ describe('Car Management Application - Responsive Testing', () => {
     })
   })
 })
+
+
