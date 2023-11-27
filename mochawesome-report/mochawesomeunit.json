@@ -1,0 +1,641 @@
+{
+  "stats": {
+    "suites": 9,
+    "tests": 10,
+    "passes": 10,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-11-27T15:38:46.119Z",
+    "end": "2023-11-27T15:38:46.243Z",
+    "duration": 124,
+    "testsRegistered": 11,
+    "passPercent": 90.9090909090909,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "273ac871-c47a-471b-9ba5-91b9fe2efe5b",
+      "title": "",
+      "fullFile": "C:\\Users\\chris\\source\\repos\\esieaFront-main\\test\\test.stockcar.js",
+      "file": "\\test\\test.stockcar.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "should handle errors when fetching car data",
+          "fullTitle": "should handle errors when fetching car data",
+          "timedOut": false,
+          "duration": 0,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "fetchStub.returns(Promise.resolve({\n    ok: false\n}));\n// Clear any existing table element\ndocument.body.innerHTML = '<div id=\"listeVoiture\"></div>';\nawait stockcar.afficherTableauListeVoitures(1);\n// Assert that error handling logic is triggered (e.g., snackbar for API errors)\nconst snackbarErrorApi = document.getElementById('snackbar_erreur_api');\nassert.notExists(snackbarErrorApi);\n// Add assertions based on how errors are handled in your code",
+          "err": {},
+          "uuid": "f75fe0ef-1c67-4615-a39b-19b1b7420adb",
+          "parentUUID": "273ac871-c47a-471b-9ba5-91b9fe2efe5b",
+          "isHook": false,
+          "skipped": true
+        }
+      ],
+      "suites": [
+        {
+          "uuid": "8bbd280d-2c2b-489a-b55c-9610e182081c",
+          "title": "Stockcar",
+          "fullFile": "C:\\Users\\chris\\source\\repos\\esieaFront-main\\test\\test.stockcar.js",
+          "file": "\\test\\test.stockcar.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "7c405ea4-3b55-49d8-80e0-6381ec6bfdac",
+              "title": "afficherTableauListeVoitures",
+              "fullFile": "C:\\Users\\chris\\source\\repos\\esieaFront-main\\test\\test.stockcar.js",
+              "file": "\\test\\test.stockcar.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before all\" hook in \"afficherTableauListeVoitures\"",
+                  "fullTitle": "Stockcar afficherTableauListeVoitures \"before all\" hook in \"afficherTableauListeVoitures\"",
+                  "timedOut": false,
+                  "duration": 1,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "fetchStub = sinon.stub(global, 'fetch');",
+                  "err": {},
+                  "uuid": "cba17947-d32b-4960-ba2d-86394eb66a22",
+                  "parentUUID": "7c405ea4-3b55-49d8-80e0-6381ec6bfdac",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [
+                {
+                  "title": "\"after all\" hook in \"afficherTableauListeVoitures\"",
+                  "fullTitle": "Stockcar afficherTableauListeVoitures \"after all\" hook in \"afficherTableauListeVoitures\"",
+                  "timedOut": false,
+                  "duration": 1,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "fetchStub.restore();",
+                  "err": {},
+                  "uuid": "f0ced693-51be-4dc3-8496-af35b6773e35",
+                  "parentUUID": "7c405ea4-3b55-49d8-80e0-6381ec6bfdac",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "tests": [
+                {
+                  "title": "should fetch and display the table of cars",
+                  "fullTitle": "Stockcar afficherTableauListeVoitures should fetch and display the table of cars",
+                  "timedOut": false,
+                  "duration": 5,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// Mock response data\nconst responseData = {\n    voitures: [sampleVoiture],\n    volume: 1\n};\nfetchStub.returns(Promise.resolve({\n    ok: true,\n    json: () => Promise.resolve(responseData)\n}));\ndocument.body.innerHTML = '<div id=\"listeVoiture\"></div>';\nawait stockcar.afficherTableauListeVoitures(1);\nconst tableElement = document.getElementById('listeVoiture');\n\nassert.exists(tableElement);\n\n\n        it('should handle errors when fetching car data', async () => {\nfetchStub.returns(Promise.resolve({\n    ok: false\n}));\n// Clear any existing table element\ndocument.body.innerHTML = '<div id=\"listeVoiture\"></div>';\nawait stockcar.afficherTableauListeVoitures(1);\n// Assert that error handling logic is triggered (e.g., snackbar for API errors)\nconst snackbarErrorApi = document.getElementById('snackbar_erreur_api');\nassert.notExists(snackbarErrorApi);\n// Add assertions based on how errors are handled in your code\n        });",
+                  "err": {},
+                  "uuid": "ede67318-588e-4814-ae7c-f9f2c5ad7905",
+                  "parentUUID": "7c405ea4-3b55-49d8-80e0-6381ec6bfdac",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "ede67318-588e-4814-ae7c-f9f2c5ad7905"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 5,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "0f6d48f9-d0d4-4942-a2a8-94fb7d0db4d0",
+              "title": "effacerFormulaire",
+              "fullFile": "C:\\Users\\chris\\source\\repos\\esieaFront-main\\test\\test.stockcar.js",
+              "file": "\\test\\test.stockcar.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Vider le formulaire",
+                  "fullTitle": "Stockcar effacerFormulaire Vider le formulaire",
+                  "timedOut": false,
+                  "duration": 1,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "global.document = forms.window.document;\nstockcar.effacerFormulaire();\nchai.assert.equal(document.getElementById('marque').value, '');\nchai.assert.equal(document.getElementById('modele').value, '');\nchai.assert.equal(document.getElementById('finition').value, '');\nchai.assert.equal(document.getElementById('carburant').value, '');\nchai.assert.equal(document.getElementById('km').value, '');\nchai.assert.equal(document.getElementById('annee').value, '');\nchai.assert.equal(document.getElementById('prix').value, '');",
+                  "err": {},
+                  "uuid": "9ea3d69e-5eea-49cf-bda7-7ec14c2d8e32",
+                  "parentUUID": "0f6d48f9-d0d4-4942-a2a8-94fb7d0db4d0",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "9ea3d69e-5eea-49cf-bda7-7ec14c2d8e32"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "20825892-a703-460c-aac5-93c48ea0a47d",
+              "title": "ajouterVoiture",
+              "fullFile": "C:\\Users\\chris\\source\\repos\\esieaFront-main\\test\\test.stockcar.js",
+              "file": "\\test\\test.stockcar.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before each\" hook in \"ajouterVoiture\"",
+                  "fullTitle": "Stockcar ajouterVoiture \"before each\" hook in \"ajouterVoiture\"",
+                  "timedOut": false,
+                  "duration": 1,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "fetchStub = sinon.stub(global, 'fetch');",
+                  "err": {},
+                  "uuid": "22ad25b0-3729-4099-bfa8-686159dde59a",
+                  "parentUUID": "20825892-a703-460c-aac5-93c48ea0a47d",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [
+                {
+                  "title": "\"after each\" hook in \"ajouterVoiture\"",
+                  "fullTitle": "Stockcar ajouterVoiture \"after each\" hook in \"ajouterVoiture\"",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "fetchStub.restore();",
+                  "err": {},
+                  "uuid": "bca1c0e3-29bc-45dd-9d19-c520b4ab8ff4",
+                  "parentUUID": "20825892-a703-460c-aac5-93c48ea0a47d",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "tests": [
+                {
+                  "title": "Ajouter une voiture sur la liste",
+                  "fullTitle": "Stockcar ajouterVoiture Ajouter une voiture sur la liste",
+                  "timedOut": false,
+                  "duration": 1,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "fetchStub.resolves({\n  ok: true,\n  json: () => ({ succes: true })\n});\nglobal.document = {\n  getElementById: function(id) {\n    return { value: 'testValue' };\n  }\n};\nawait stockcar.ajouterVoiture();\nchai.assert(fetchStub.calledOnce);\nconst expectedUrl = 'http://localhost:8080/esieaBack/rest/voiture/add/';\nchai.assert.equal(fetchStub.firstCall.args[0], expectedUrl);\nchai.assert.deepEqual(JSON.parse(fetchStub.firstCall.args[1].body), {\n  marque: 'testValue',\n  modele: 'testValue',\n  finition: 'testValue',\n  carburant: 'testValue',\n  km: 'testValue',\n  annee: 'testValue',\n  prix: 'testValue'\n});\nfetchStub.restore();",
+                  "err": {},
+                  "uuid": "bf3110b6-06c7-4b72-b9e8-2ee4e3886d4d",
+                  "parentUUID": "20825892-a703-460c-aac5-93c48ea0a47d",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "bf3110b6-06c7-4b72-b9e8-2ee4e3886d4d"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "59fe4757-4457-4b67-89e2-b166ffb267bc",
+              "title": "calculerNbPages",
+              "fullFile": "C:\\Users\\chris\\source\\repos\\esieaFront-main\\test\\test.stockcar.js",
+              "file": "\\test\\test.stockcar.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should calculate the correct number of pages for a given number of lines",
+                  "fullTitle": "Stockcar calculerNbPages should calculate the correct number of pages for a given number of lines",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// Test case 1: 10 lines with 5 lines per page should result in 2 pages\nconst result1 = stockcar.calculerNbPages(10, 5);\nassert.strictEqual(result1, 2);\n// Test case 2: 15 lines with 4 lines per page should result in 3 pages\nconst result2 = stockcar.calculerNbPages(15, 5);\nassert.strictEqual(result2, 3);\n// Test case 3: 7 lines with 10 lines per page should result in 2 page\nconst result3 = stockcar.calculerNbPages(7, 5);\nassert.strictEqual(result3, 2);\n// Test case 4: 0 lines with 5 lines per page should result in 0 pages\nconst result4 = stockcar.calculerNbPages(0, 5);\nassert.strictEqual(result4, 0);",
+                  "err": {},
+                  "uuid": "f47f0a81-f870-4e9e-b015-09687e3a9eba",
+                  "parentUUID": "59fe4757-4457-4b67-89e2-b166ffb267bc",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "f47f0a81-f870-4e9e-b015-09687e3a9eba"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 0,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "7b0708a9-3cb3-46c9-b2c9-ad7324c61706",
+              "title": "cacherFormulaireCreation",
+              "fullFile": "C:\\Users\\chris\\source\\repos\\esieaFront-main\\test\\test.stockcar.js",
+              "file": "\\test\\test.stockcar.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before each\" hook in \"cacherFormulaireCreation\"",
+                  "fullTitle": "Stockcar cacherFormulaireCreation \"before each\" hook in \"cacherFormulaireCreation\"",
+                  "timedOut": false,
+                  "duration": 8,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// Set up the DOM with necessary elements\ndom = new JSDOM('<!DOCTYPE html><html><body></body></html>');\nglobal.document = dom.window.document;",
+                  "err": {},
+                  "uuid": "f39912a5-9d91-4989-9e1d-fb341bc1fa01",
+                  "parentUUID": "7b0708a9-3cb3-46c9-b2c9-ad7324c61706",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should hide the \"nouvelle\" element and display other elements",
+                  "fullTitle": "Stockcar cacherFormulaireCreation should hide the \"nouvelle\" element and display other elements",
+                  "timedOut": false,
+                  "duration": 4,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// Set up the DOM with necessary elements\ndocument.body.innerHTML = `\n    <div id=\"nouvelle\" style=\"display: block;\"></div>\n    <div id=\"fiche\" style=\"display: none;\"></div>\n    <div id=\"recherche\" style=\"display: none;\"></div>\n    <div class=\"pagination\" style=\"display: none;\"></div>\n`;\nstockcar.cacherFormulaireCreation();\n// Check if the 'nouvelle' element is hidden\nconst nouvelleElement = document.getElementById('nouvelle');\nassert.equal(nouvelleElement.style.display, 'none');\n// Check if the other elements are displayed\nconst ficheElement = document.getElementById('fiche');\nassert.equal(ficheElement.style.display, 'block');\nconst rechercheElement = document.getElementById('recherche');\nassert.equal(rechercheElement.style.display, 'block');\nconst paginationElement = document.querySelector('div.pagination');\nassert.equal(paginationElement.style.display, 'block');",
+                  "err": {},
+                  "uuid": "ba8c29de-5138-4c56-9be2-9e6035a47b74",
+                  "parentUUID": "7b0708a9-3cb3-46c9-b2c9-ad7324c61706",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "ba8c29de-5138-4c56-9be2-9e6035a47b74"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 4,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "c8134ec7-4c1b-4fda-b047-f69b10ee5842",
+              "title": "afficherBlocVoiture",
+              "fullFile": "C:\\Users\\chris\\source\\repos\\esieaFront-main\\test\\test.stockcar.js",
+              "file": "\\test\\test.stockcar.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before each\" hook in \"afficherBlocVoiture\"",
+                  "fullTitle": "Stockcar afficherBlocVoiture \"before each\" hook in \"afficherBlocVoiture\"",
+                  "timedOut": false,
+                  "duration": 6,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// Create a new JSDOM instance and set it as the global document\nconst dom = new JSDOM('<!DOCTYPE html><html><body><div id=\"infos\"></div></body></html>');\ndocument = dom.window.document;\nglobal.document = document;",
+                  "err": {},
+                  "uuid": "258283c3-5484-43e2-9de1-3fa514c3c8cb",
+                  "parentUUID": "c8134ec7-4c1b-4fda-b047-f69b10ee5842",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [
+                {
+                  "title": "\"after each\" hook in \"afficherBlocVoiture\"",
+                  "fullTitle": "Stockcar afficherBlocVoiture \"after each\" hook in \"afficherBlocVoiture\"",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// Clean up and reset the global document\nglobal.document = undefined;",
+                  "err": {},
+                  "uuid": "6cd76b7a-61f3-4c19-a7c5-12ea3c4cd67b",
+                  "parentUUID": "c8134ec7-4c1b-4fda-b047-f69b10ee5842",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "tests": [
+                {
+                  "title": "should create a \"Supprimer\" button with the correct onclick attribute",
+                  "fullTitle": "Stockcar afficherBlocVoiture should create a \"Supprimer\" button with the correct onclick attribute",
+                  "timedOut": false,
+                  "duration": 13,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "stockcar.afficherBlocVoiture(sampleVoiture);\n// Verify the presence of the \"Supprimer\" button and its onclick attribute\nconst supprimerButton = document.querySelector('button');\nassert.exists(supprimerButton);\nassert.equal(supprimerButton.getAttribute('onclick'), 'supprimerVoiture(1)');",
+                  "err": {},
+                  "uuid": "0a084abf-0f90-4f5a-b0ab-9b326754aa52",
+                  "parentUUID": "c8134ec7-4c1b-4fda-b047-f69b10ee5842",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "0a084abf-0f90-4f5a-b0ab-9b326754aa52"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 13,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "51341db8-d282-473a-834d-f17c72bf635d",
+              "title": "supprimerVoiture",
+              "fullFile": "C:\\Users\\chris\\source\\repos\\esieaFront-main\\test\\test.stockcar.js",
+              "file": "\\test\\test.stockcar.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before each\" hook in \"supprimerVoiture\"",
+                  "fullTitle": "Stockcar supprimerVoiture \"before each\" hook in \"supprimerVoiture\"",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "fetchStub = sinon.stub(global, 'fetch');",
+                  "err": {},
+                  "uuid": "aa795060-ff21-4d6f-9a43-4e891dcf515d",
+                  "parentUUID": "51341db8-d282-473a-834d-f17c72bf635d",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [
+                {
+                  "title": "\"after each\" hook in \"supprimerVoiture\"",
+                  "fullTitle": "Stockcar supprimerVoiture \"after each\" hook in \"supprimerVoiture\"",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "fetchStub.restore();",
+                  "err": {},
+                  "uuid": "43bcc2c7-d0a9-4a63-ad58-27b4453c86b0",
+                  "parentUUID": "51341db8-d282-473a-834d-f17c72bf635d",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "tests": [
+                {
+                  "title": "should handle errors when deleting a car",
+                  "fullTitle": "Stockcar supprimerVoiture should handle errors when deleting a car",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "fetchStub.returns(Promise.resolve({ ok: false }));\nconst expectedId = 123; // Mock an ID for testing\nawait stockcar.supprimerVoiture(expectedId);",
+                  "err": {},
+                  "uuid": "9cfcdc4c-9af9-4a9c-ad7c-1eab73d12ac9",
+                  "parentUUID": "51341db8-d282-473a-834d-f17c72bf635d",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "9cfcdc4c-9af9-4a9c-ad7c-1eab73d12ac9"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 0,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "658b784a-94f1-47f5-88af-a59f92301d2e",
+              "title": "selectionnerPage",
+              "fullFile": "C:\\Users\\chris\\source\\repos\\esieaFront-main\\test\\test.stockcar.js",
+              "file": "\\test\\test.stockcar.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before each\" hook in \"selectionnerPage\"",
+                  "fullTitle": "Stockcar selectionnerPage \"before each\" hook in \"selectionnerPage\"",
+                  "timedOut": false,
+                  "duration": 7,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// Reset the DOM before each test\ndom = new JSDOM('<!DOCTYPE html><html><body><div id=\"pages\"><a value=\"1\"></a><a value=\"2\"></a></div><div class=\"pagination\"><a class=\"previous\"></a><a class=\"next\"></a></div></body></html>');\nglobal.document = dom.window.document;\ndom.window.document.querySelector(\"div#pages a[value='1']\").classList.add('active');\ndom.window.document.querySelector(\"div.pagination a.previous\").classList.remove('disabled');\ndom.window.document.querySelector(\"div.pagination a.previous\").setAttribute('href', '#');\ndom.window.document.querySelector(\"div.pagination a.previous\").setAttribute('onclick', 'paginer(0)');\ndom.window.document.querySelector(\"div.pagination a.next\").classList.remove('disabled');\ndom.window.document.querySelector(\"div.pagination a.next\").setAttribute('href', '#');\ndom.window.document.querySelector(\"div.pagination a.next\").setAttribute('onclick', 'paginer(2)');",
+                  "err": {},
+                  "uuid": "e2cb8501-0c66-4558-9edf-6ff483a8bc43",
+                  "parentUUID": "658b784a-94f1-47f5-88af-a59f92301d2e",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should set the active class for the specified page",
+                  "fullTitle": "Stockcar selectionnerPage should set the active class for the specified page",
+                  "timedOut": false,
+                  "duration": 2,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "stockcar.selectionnerPage(2, 10);\nassert.isTrue(dom.window.document.querySelector(\"div#pages a[value='2']\").classList.contains('active'));",
+                  "err": {},
+                  "uuid": "87f37067-b2b1-4231-8f82-6e6d63721c72",
+                  "parentUUID": "658b784a-94f1-47f5-88af-a59f92301d2e",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should disable previous button for the first page",
+                  "fullTitle": "Stockcar selectionnerPage should disable previous button for the first page",
+                  "timedOut": false,
+                  "duration": 1,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "stockcar.selectionnerPage(1, 10);\nassert.isTrue(dom.window.document.querySelector(\"div.pagination a.previous\").classList.contains('disabled'));\nassert.isNotOk(dom.window.document.querySelector(\"div.pagination a.previous\").getAttribute('href'));",
+                  "err": {},
+                  "uuid": "70d90632-17cf-4018-a9c8-6ab491e37c71",
+                  "parentUUID": "658b784a-94f1-47f5-88af-a59f92301d2e",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should enable next button for pages other than the last",
+                  "fullTitle": "Stockcar selectionnerPage should enable next button for pages other than the last",
+                  "timedOut": false,
+                  "duration": 2,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "stockcar.selectionnerPage(1, 2);\nassert.isFalse(dom.window.document.querySelector(\"div.pagination a.next\").classList.contains('disabled'));\nassert.equal(dom.window.document.querySelector(\"div.pagination a.next\").getAttribute('href'), '#');\nassert.equal(dom.window.document.querySelector(\"div.pagination a.next\").getAttribute('onclick'), 'paginer(2)');",
+                  "err": {},
+                  "uuid": "4b3b4d47-b65a-458e-9bf8-6d8f9959e5e4",
+                  "parentUUID": "658b784a-94f1-47f5-88af-a59f92301d2e",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "87f37067-b2b1-4231-8f82-6e6d63721c72",
+                "70d90632-17cf-4018-a9c8-6ab491e37c71",
+                "4b3b4d47-b65a-458e-9bf8-6d8f9959e5e4"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 5,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [
+        "f75fe0ef-1c67-4615-a39b-19b1b7420adb"
+      ],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
