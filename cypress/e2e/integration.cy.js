@@ -1,4 +1,6 @@
 // cypress/integration/integration.spec.js
+
+var timestamp
 const config = {
   urlBack: "http://localhost:8080/esieaBack/rest",
   ligneParPage: 5,
@@ -75,17 +77,18 @@ describe('Tests d\'intégration', () => {
   it('Ajout d\'une voiture via l\'interface', () => {
     // Se rendre sur la page d'accueil
     cy.visit('http://localhost:8080/esieaFront/');
-    cy.pause();
+    
     cy.window().then((win) => {
       win.afficherFormulaireCreation();
     });
-    cy.pause();
+    cy.wait(1000);
     // Afficher le formulaire d'ajout d'une voiture
     cy.get('#nouvelle').invoke('show');
-
+    timestamp = Date.now();
     // Remplir le formulaire d'ajout d'une voiture
-    cy.get('#marque').type('Toyota');
-    cy.get('#modele').type('Corolla');
+   
+    cy.get('#marque').type(timestamp);
+    cy.get('#modele').type(timestamp);
     cy.get('#finition').type('Sport');
     cy.get('#carburant').select('Essence');
     cy.get('#km').type('50000');
@@ -96,59 +99,48 @@ describe('Tests d\'intégration', () => {
     cy.get('#nouvelleVoiture').click();
 
     // Vérifier le message de confirmation
-    // cy.get('.snackbar_ajout').should('exist').and('be.visible');
+    cy.get('#snackbar_ajout').should('exist');
 
-    // Attendre un court instant pour que les données soient ajoutées
-    cy.wait(1000);
+    
 
     // Vérifier que la voiture ajoutée apparaît dans la liste
-    cy.pause();
-    cy.get('#listeVoitureTable tbody tr').should('have.length.gt', 0);
-
-    let voitureTrouvee = false;
-
-    const findCar = () => {
-      return cy.contains('#listeVoitureTable tbody tr td', 'Toyota').then(($car) => {
-        if ($car.length > 0) {
-          voitureTrouvee = true;
-        }
-      });
-    };
-    
-    const clickNextPage = () => {
-      return cy.get('div.pagination a.next').then(($nextButton) => {
-        if (!$nextButton.hasClass('disabled') && !voitureTrouvee) {
-          $nextButton.click();
-          return findCar().then(() => {
-            if (!voitureTrouvee) {
-              return clickNextPage();
-            }
-          });
-        }
-      });
-    };
-    
-    cy.wrap(null).then(() => {
-      return findCar().then(() => {
-        if (!voitureTrouvee) {
-          return clickNextPage();
-        }
-      });
-    });
-    
-    
     
 
-  // Ajoutez une pause ici si nécessaire pour éviter des problèmes de synchronisation
+    cy.get('#saisieRecherche').scrollIntoView().type(timestamp);
+
+    cy.get('.rechercher.button').click();
 
 
+    cy.get('#listeVoitureTable tbody tr').should('have.length.greaterThan', 0);
     
 
     
-    // Vérifier que les détails de la voiture ajoutée sont corrects
-    // cy.contains('#listeVoitureTable tbody tr td', 'Toyota').should('exist');
-    // cy.contains('#listeVoitureTable tbody tr td', 'Corolla').should('exist');
-    // ... (vérification des autres détails de la voiture)
+    cy.contains('#listeVoitureTable tbody tr td', timestamp).should('exist');
+   
+    
+  });
+
+
+  it('Supprime une voiture de la liste', () => {
+    cy.visit('http://localhost:8080/esieaFront/');
+
+    cy.get('#saisieRecherche').scrollIntoView().type(timestamp);
+
+    cy.get('.rechercher.button').click();
+    // Trouver une voiture existante et supprimer
+    cy.contains('#listeVoitureTable tbody tr', timestamp)
+      .find('td')
+      .contains('a', 'Détails')
+      .click();
+
+    cy.get('#divSupprimer button').click();
+      
+
+    // Vérifier le message de confirmation
+    cy.get('#snackbar_suppression').should('contain', 'La voiture a été supprimée');
+
+    // Vérifier que la voiture n'est plus dans la liste
+    cy.contains('.voiture-item', timestamp).should('not.exist');
   });
 });
   
@@ -158,25 +150,7 @@ describe('Tests d\'intégration', () => {
 
 
 
-  // it('Fonction effacerFormulaire', () => {
-  //   // Remplir le formulaire avec des valeurs
-  //   cy.get('#marque').type('TestMarque');
-  //   cy.get('#modele').type('TestModele');
-  //   // ... (remplir d'autres champs)
-
-  //   // Utiliser la fonction effacerFormulaire
-  //   cy.window().invoke('effacerFormulaire');
-
-  //   // Vérifier que les champs du formulaire sont vides
-  //   cy.get('#marque').should('have.value', '');
-  //   cy.get('#modele').should('have.value', '');
-  //   // ... (vérifier d'autres champs)
-  // });
-
-
-describe('Affichage du tableau de voitures', () => {
   
- 
-});
+
 
 
