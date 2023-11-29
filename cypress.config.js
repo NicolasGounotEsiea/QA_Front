@@ -21,4 +21,19 @@ module.exports = defineConfig({
       bundler: "webpack",
     },
   },
+
+  reporter: 'cypress-multi-reporters',
+  reporterOptions: {
+    reporterEnabled: 'mocha-junit-reporters, mochawesome',
+    mochaJunitReportersReporterOptions: {
+      mochaFile: 'test-results/junit/test-results2.[hash].xml',
+      toConsole: true,
+    },
+    mochawesomeReporterOptions: {
+      reportDir: 'test-results/mochawesome',
+      overwrite: true,
+      html: true,
+      json: true,
+    },
+  },
 });
