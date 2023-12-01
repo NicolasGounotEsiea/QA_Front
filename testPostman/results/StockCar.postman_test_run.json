@@ -1,0 +1,334 @@
+{
+	"id": "cae7f3a1-f958-43c6-86e4-5c351729da64",
+	"name": "StockCar",
+	"timestamp": "2023-11-30T23:11:50.283Z",
+	"collection_id": "26784941-a120ef52-c2a2-42f8-ae71-9d6a028f1103",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 27,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-11-30T23:11:49.513Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "36efd235-8a18-4d9a-a903-96a731dd1f0d",
+			"name": "getVoituresJson(all)",
+			"url": "http://localhost:8080/esieaBack/rest/voiture/get/all",
+			"time": 44,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Validate the volume field is a non-negative integer": true,
+				"Verify that the 'voitures' array is present and contains at least one element": true,
+				"Each element in the 'voitures' array is a non-empty string": true,
+				"Response time is less than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the volume field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'voitures' array is present and contains at least one element": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each element in the 'voitures' array is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				44
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Validate the volume field is a non-negative integer": true,
+					"Verify that the 'voitures' array is present and contains at least one element": true,
+					"Each element in the 'voitures' array is a non-empty string": true,
+					"Response time is less than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "77466ede-c333-4aae-9ab3-2afc3e09898d",
+			"name": "getVoituresJson(id)",
+			"url": "http://localhost:8080/esieaBack/rest/voiture/get/60",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response has the required fields": true,
+				"Id is a positive integer": true,
+				"voiture is a non-empty string": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Id is a positive integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"voiture is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response has the required fields": true,
+					"Id is a positive integer": true,
+					"voiture is a non-empty string": true
+				}
+			]
+		},
+		{
+			"id": "523c577f-5928-48fd-b8e9-e883ad30dc34",
+			"name": "getVoituresJson(all/2/12)",
+			"url": "http://localhost:8080/esieaBack/rest/voiture/get/all/2/12",
+			"time": 24,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Validate the volume field is a non-negative integer": true,
+				"Verify that the 'voitures' array is present in the response": true,
+				"Each element in the 'voitures' array is a non-empty string": true,
+				"Response time is less than 500ms": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the volume field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'voitures' array is present in the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each element in the 'voitures' array is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				24
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Validate the volume field is a non-negative integer": true,
+					"Verify that the 'voitures' array is present in the response": true,
+					"Each element in the 'voitures' array is a non-empty string": true,
+					"Response time is less than 500ms": true
+				}
+			]
+		},
+		{
+			"id": "d5757ab1-d388-4b87-af7d-3cb56ddad976",
+			"name": "getVoituresJson(Toyota)",
+			"url": "http://localhost:8080/esieaBack/rest/voiture/get/Toyota",
+			"time": 37,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response has the required fields - volume and voitures": true,
+				"Verify that the 'volume' field is a non-negative integer": true,
+				"Verify that the 'voitures' field is an array and is not empty": true,
+				"Each element in the 'voitures' array is a non-empty string": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields - volume and voitures": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'volume' field is a non-negative integer": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'voitures' field is an array and is not empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each element in the 'voitures' array is a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				37
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response has the required fields - volume and voitures": true,
+					"Verify that the 'volume' field is a non-negative integer": true,
+					"Verify that the 'voitures' field is an array and is not empty": true,
+					"Each element in the 'voitures' array is a non-empty string": true
+				}
+			]
+		},
+		{
+			"id": "ef5c4408-8780-415f-9337-e2d1de5ed66d",
+			"name": "ajouterVoiture",
+			"url": "http://localhost:8080/esieaBack/rest/voiture/add/",
+			"time": 45,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response has the 'succes' field": true,
+				"The value of the 'succes' field is a boolean": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the 'succes' field": {
+					"pass": 1,
+					"fail": 0
+				},
+				"The value of the 'succes' field is a boolean": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response has the 'succes' field": true,
+					"The value of the 'succes' field is a boolean": true
+				}
+			]
+		},
+		{
+			"id": "36b97e71-3d27-42b9-bf27-9b07610174c3",
+			"name": "supprimerVoiture(id)",
+			"url": "http://localhost:8080/esieaBack/rest/voiture/del/",
+			"time": 42,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Verify that the 'succes' field is present in the response": true,
+				"Verify that the value of 'succes' is true": true,
+				"Response time is within an acceptable range": true,
+				"Verify that the response body is not empty": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the 'succes' field is present in the response": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the value of 'succes' is true": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that the response body is not empty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Verify that the 'succes' field is present in the response": true,
+					"Verify that the value of 'succes' is true": true,
+					"Response time is within an acceptable range": true,
+					"Verify that the response body is not empty": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 213,
+	"collection": {
+		"requests": [
+			{
+				"id": "36efd235-8a18-4d9a-a903-96a731dd1f0d",
+				"method": "GET"
+			},
+			{
+				"id": "77466ede-c333-4aae-9ab3-2afc3e09898d",
+				"method": "GET"
+			},
+			{
+				"id": "523c577f-5928-48fd-b8e9-e883ad30dc34",
+				"method": "GET"
+			},
+			{
+				"id": "d5757ab1-d388-4b87-af7d-3cb56ddad976",
+				"method": "GET"
+			},
+			{
+				"id": "ef5c4408-8780-415f-9337-e2d1de5ed66d",
+				"method": "POST"
+			},
+			{
+				"id": "36b97e71-3d27-42b9-bf27-9b07610174c3",
+				"method": "POST"
+			}
+		]
+	}
+}
