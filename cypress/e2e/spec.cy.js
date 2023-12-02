@@ -1,11 +1,11 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('http://localhost:8080/esieaFront/')
+    cy.visit('https://cours-qualite.groupe-esiea.fr/esieaFront/')
   })
 })
 describe('UTF-8 Encoding Test', () => {
   it('Verifies page content is UTF-8 encoded', () => {
-    cy.visit('http://localhost:8080/esieaFront/') // Replace with the URL of the page you want to test
+    cy.visit('https://cours-qualite.groupe-esiea.fr/esieaFront/') // Replace with the URL of the page you want to test
 
     cy.document().then((doc) => {
       const textContent = doc.body.innerText

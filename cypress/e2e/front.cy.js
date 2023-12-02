@@ -5,7 +5,7 @@ const config = {
 };
 describe('Affichage de la page', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:8080/esieaFront/');
+      cy.visit('https://cours-qualite.groupe-esiea.fr/esieaFront/');
       cy.viewport(1024, 768)
     });
 
