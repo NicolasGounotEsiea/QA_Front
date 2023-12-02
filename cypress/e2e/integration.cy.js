@@ -2,7 +2,7 @@
 
 var timestamp
 const config = {
-  urlBack: "http://localhost:8080/esieaBack/rest",
+  urlBack: "http://cours-qualite.groupe-esiea.fr/esieaBack/rest",
   ligneParPage: 5,
 };
 

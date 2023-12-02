@@ -1,6 +1,6 @@
 var timestamp
 const config = {
-  urlBack: "http://localhost:8080/esieaBack/rest",
+  urlBack: "http://cours-qualite.groupe-esiea.f/esieaBack/rest",
   ligneParPage: 5,
 };
 describe('Affichage de la page', () => {
