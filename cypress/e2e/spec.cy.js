@@ -26,7 +26,7 @@ describe('UTF-8 Encoding Test', () => {
 describe('Car Management Application E2E Tests', () => {
   beforeEach(() => {
     cy.viewport(1800, 800)
-    cy.visit('http://localhost:8080/esieaFront/') // Replace with the path to your HTML file
+    cy.visit('http://cours-qualite.groupe-esiea.fr/esieaFront/') // Replace with the path to your HTML file
   })
 
   it('Loads the application', () => {
@@ -119,7 +119,7 @@ describe('Car Management Application - Responsive Testing', () => {
   viewports.forEach((viewport) => {
     it(`Adapts well to ${viewport}`, () => {
       cy.viewport(viewport)
-      cy.visit('http://localhost:8080/esieaFront/')
+      cy.visit('http://cours-qualite.groupe-esiea.fr/esieaFront/')
 
 
       switch (viewport) {
