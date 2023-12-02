@@ -1,0 +1,384 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 12,
+    "passes": 10,
+    "pending": 0,
+    "failures": 2,
+    "start": "2023-11-29T15:19:59.381Z",
+    "end": "2023-11-29T15:20:18.751Z",
+    "duration": 19370,
+    "testsRegistered": 12,
+    "passPercent": 83.33333333333334,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "515b0d35-a72c-4f0b-b114-8b23481aef52",
+      "title": "",
+      "fullFile": "cypress\\e2e\\spec.cy.js",
+      "file": "cypress\\e2e\\spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9b15d04f-0e31-4b4f-9684-6174b57fa52d",
+          "title": "template spec",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "passes",
+              "fullTitle": "template spec passes",
+              "timedOut": null,
+              "duration": 2409,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('http://localhost:8080/esieaFront/');",
+              "err": {},
+              "uuid": "95bb3c45-02b6-446a-8644-0700a6e1d42b",
+              "parentUUID": "9b15d04f-0e31-4b4f-9684-6174b57fa52d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "95bb3c45-02b6-446a-8644-0700a6e1d42b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2409,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "13ccf556-1719-4ecc-b38b-354e7de2a99f",
+          "title": "UTF-8 Encoding Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verifies page content is UTF-8 encoded",
+              "fullTitle": "UTF-8 Encoding Test Verifies page content is UTF-8 encoded",
+              "timedOut": null,
+              "duration": 91,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('http://localhost:8080/esieaFront/'); // Replace with the URL of the page you want to test\ncy.document().then(doc => {\n  const textContent = doc.body.innerText;\n  function isUTF8(str) {\n    try {\n      new TextDecoder('utf-8').decode(new TextEncoder().encode(str));\n      return true;\n    } catch (error) {\n      return false;\n    }\n  }\n  expect(isUTF8(textContent)).to.equal(true);\n});",
+              "err": {},
+              "uuid": "a584652c-2bd2-4296-b11f-7ee2e61128d7",
+              "parentUUID": "13ccf556-1719-4ecc-b38b-354e7de2a99f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a584652c-2bd2-4296-b11f-7ee2e61128d7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 91,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "b6805456-247f-4cb5-b798-628b6be533f6",
+          "title": "Car Management Application E2E Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Loads the application",
+              "fullTitle": "Car Management Application E2E Tests Loads the application",
+              "timedOut": null,
+              "duration": 247,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Check if the title exists and contains the expected text\ncy.title().should('eq', 'Stock car');\n// Check if the header is present\ncy.contains('h2', 'Liste des voitures en stock').should('be.visible');\n// Check the initial content after page load\ncy.get('#conteneurSection').within(() => {\n  // Check if different sections are present\n  cy.get('#recherche').should('be.visible');\n  it('Simulates user actions', () => {\n    // Perform actions, for example, click on the 'Détails' link\n    cy.contains(a[onclick = \"afficherVoiture(5)\"]).click();\n    // Validate the change or resulting content after the action\n    // Example: Check if the content after clicking 'Détails' is visible\n    cy.get('#fiche').should('be.visible');\n    cy.get('#infos').should('be.visible');\n    cy.get('#divSupprimer').should('be.visible');\n  });\n  it('Simulates user actions', () => {\n    cy.get('#nouvelleVoiture').click();\n    cy.get('#nouvelle').should('be.visible');\n  });\n  cy.get('#marque').should('exist');\n  cy.get('#modele').should('exist');\n  cy.get('#nouvelleVoiture').should('exist').and('contain', 'Ajouter');\n});",
+              "err": {},
+              "uuid": "41c3c15e-3050-425e-934a-5c92b0e7cbe6",
+              "parentUUID": "b6805456-247f-4cb5-b798-628b6be533f6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Simulates user actions",
+              "fullTitle": "Car Management Application E2E Tests Simulates user actions",
+              "timedOut": null,
+              "duration": 198,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains('#nav', 'Accueil').click();\ncy.get('#content').should('be.visible');",
+              "err": {},
+              "uuid": "fd2c22b9-8da6-431d-8f8e-d964bdeaaf82",
+              "parentUUID": "b6805456-247f-4cb5-b798-628b6be533f6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Displays car details after clicking on \"Détails\"",
+              "fullTitle": "Car Management Application E2E Tests Displays car details after clicking on \"Détails\"",
+              "timedOut": null,
+              "duration": 465,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Click on the \"Détails\" link for a specific car (replace 5 with the actual car ID)\ncy.contains('a', 'Détails').click();\n// Validate that the car details section is visible\ncy.get('#fiche').should('be.visible');\ncy.get('#infos').should('be.visible');\ncy.get('#divSupprimer').should('be.visible');",
+              "err": {},
+              "uuid": "b208668b-acf5-4157-85be-206f96d56953",
+              "parentUUID": "b6805456-247f-4cb5-b798-628b6be533f6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Searches for a car and displays results",
+              "fullTitle": "Car Management Application E2E Tests Searches for a car and displays results",
+              "timedOut": null,
+              "duration": 587,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#saisieRecherche').type('Toyota');\ncy.get('.rechercher').click();\ncy.get('#listeVoiture').should('be.visible');",
+              "err": {},
+              "uuid": "79165624-1768-4f0f-b8ad-e0fb2741343e",
+              "parentUUID": "b6805456-247f-4cb5-b798-628b6be533f6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Navigates to \"Ajouter une voiture\" page",
+              "fullTitle": "Car Management Application E2E Tests Navigates to \"Ajouter une voiture\" page",
+              "timedOut": null,
+              "duration": 307,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains('#nav', 'Ajouter une voiture').click();\ncy.get('#nouvelle').invoke('removeAttr', 'style');\ncy.get('#nouvelleVoiture').click({\n  force: true\n});",
+              "err": {},
+              "uuid": "76641c92-dbfc-4c29-87fa-b93a6b49a3ae",
+              "parentUUID": "b6805456-247f-4cb5-b798-628b6be533f6",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Adds a new car",
+              "fullTitle": "Car Management Application E2E Tests Adds a new car",
+              "timedOut": null,
+              "duration": 1699,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains('#nav', 'Ajouter une voiture').click();\ncy.get('#nouvelle').invoke('removeAttr', 'style');\ncy.get('#marque').type('Toyota', {\n  force: true\n});\ncy.get('#modele').type('Camry', {\n  force: true\n});\ncy.get('#finition').type('LE', {\n  force: true\n});\ncy.get('#carburant').select('E', {\n  force: true\n});\ncy.get('#km').type('50000', {\n  force: true\n});\ncy.get('#annee').type('2022', {\n  force: true\n});\ncy.get('#prix').type('25000', {\n  force: true\n});\ncy.get('#nouvelleVoiture').click({\n  force: true\n});",
+              "err": {},
+              "uuid": "91fc6c88-7602-4181-a1db-df527a2cfa73",
+              "parentUUID": "b6805456-247f-4cb5-b798-628b6be533f6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "41c3c15e-3050-425e-934a-5c92b0e7cbe6",
+            "fd2c22b9-8da6-431d-8f8e-d964bdeaaf82",
+            "b208668b-acf5-4157-85be-206f96d56953",
+            "79165624-1768-4f0f-b8ad-e0fb2741343e",
+            "76641c92-dbfc-4c29-87fa-b93a6b49a3ae",
+            "91fc6c88-7602-4181-a1db-df527a2cfa73"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3503,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "9ff4e182-c902-48c5-ac49-62b68eaa1c70",
+          "title": "Car Management Application - Responsive Testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Adapts well to iphone-6",
+              "fullTitle": "Car Management Application - Responsive Testing Adapts well to iphone-6",
+              "timedOut": null,
+              "duration": 4590,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.viewport(viewport);\ncy.visit('http://localhost:8080/esieaFront/');\nswitch (viewport) {\n  case 'iphone-6':\n    cy.get('#logo').should('exist');\n    cy.contains('#nav', 'Accueil').should('exist');\n    cy.get('#logo').should('be.visible');\n    break;\n  case 'ipad-2':\n    cy.get('#content').should('exist');\n    cy.get('#saisieRecherche').should('be.visible');\n    cy.get('.rechercher').should('be.visible');\n    break;\n  case 'macbook-13':\n    cy.get('.pagination').should('exist');\n    cy.get('.rechercher').should('be.visible');\n    break;\n  case 'macbook-15':\n    cy.get('#conteneurSection').should('exist');\n    cy.get('#logo').should('be.visible');\n    break;\n  default:\n    // Default assertions\n    break;\n}",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<h1#logo>' to be 'visible'\n\nThis element `<h1#logo>` is not visible because it has CSS property: `display: none`",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<h1#logo>' to be 'visible'\n\nThis element `<h1#logo>` is not visible because it has CSS property: `display: none`\n    at Context.eval (webpack://stockcar-frontend/./cypress/e2e/spec.cy.js:129:26)",
+                "diff": null
+              },
+              "uuid": "8511ca5a-bbb4-4202-8583-5c34b0d03948",
+              "parentUUID": "9ff4e182-c902-48c5-ac49-62b68eaa1c70",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Adapts well to ipad-2",
+              "fullTitle": "Car Management Application - Responsive Testing Adapts well to ipad-2",
+              "timedOut": null,
+              "duration": 4475,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.viewport(viewport);\ncy.visit('http://localhost:8080/esieaFront/');\nswitch (viewport) {\n  case 'iphone-6':\n    cy.get('#logo').should('exist');\n    cy.contains('#nav', 'Accueil').should('exist');\n    cy.get('#logo').should('be.visible');\n    break;\n  case 'ipad-2':\n    cy.get('#content').should('exist');\n    cy.get('#saisieRecherche').should('be.visible');\n    cy.get('.rechercher').should('be.visible');\n    break;\n  case 'macbook-13':\n    cy.get('.pagination').should('exist');\n    cy.get('.rechercher').should('be.visible');\n    break;\n  case 'macbook-15':\n    cy.get('#conteneurSection').should('exist');\n    cy.get('#logo').should('be.visible');\n    break;\n  default:\n    // Default assertions\n    break;\n}",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<input#saisieRecherche.text>' to be 'visible'\n\nThis element `<input#saisieRecherche.text>` is not visible because its ancestor has `position: fixed` CSS property and it is overflowed by other elements. How about scrolling to the element with `cy.scrollIntoView()`?",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<input#saisieRecherche.text>' to be 'visible'\n\nThis element `<input#saisieRecherche.text>` is not visible because its ancestor has `position: fixed` CSS property and it is overflowed by other elements. How about scrolling to the element with `cy.scrollIntoView()`?\n    at Context.eval (webpack://stockcar-frontend/./cypress/e2e/spec.cy.js:134:37)",
+                "diff": null
+              },
+              "uuid": "301e77fc-f8ab-46a3-bf77-a363c24affc2",
+              "parentUUID": "9ff4e182-c902-48c5-ac49-62b68eaa1c70",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Adapts well to macbook-13",
+              "fullTitle": "Car Management Application - Responsive Testing Adapts well to macbook-13",
+              "timedOut": null,
+              "duration": 94,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.viewport(viewport);\ncy.visit('http://localhost:8080/esieaFront/');\nswitch (viewport) {\n  case 'iphone-6':\n    cy.get('#logo').should('exist');\n    cy.contains('#nav', 'Accueil').should('exist');\n    cy.get('#logo').should('be.visible');\n    break;\n  case 'ipad-2':\n    cy.get('#content').should('exist');\n    cy.get('#saisieRecherche').should('be.visible');\n    cy.get('.rechercher').should('be.visible');\n    break;\n  case 'macbook-13':\n    cy.get('.pagination').should('exist');\n    cy.get('.rechercher').should('be.visible');\n    break;\n  case 'macbook-15':\n    cy.get('#conteneurSection').should('exist');\n    cy.get('#logo').should('be.visible');\n    break;\n  default:\n    // Default assertions\n    break;\n}",
+              "err": {},
+              "uuid": "d45924ca-3426-464b-bb4f-536850129e20",
+              "parentUUID": "9ff4e182-c902-48c5-ac49-62b68eaa1c70",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Adapts well to macbook-15",
+              "fullTitle": "Car Management Application - Responsive Testing Adapts well to macbook-15",
+              "timedOut": null,
+              "duration": 100,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.viewport(viewport);\ncy.visit('http://localhost:8080/esieaFront/');\nswitch (viewport) {\n  case 'iphone-6':\n    cy.get('#logo').should('exist');\n    cy.contains('#nav', 'Accueil').should('exist');\n    cy.get('#logo').should('be.visible');\n    break;\n  case 'ipad-2':\n    cy.get('#content').should('exist');\n    cy.get('#saisieRecherche').should('be.visible');\n    cy.get('.rechercher').should('be.visible');\n    break;\n  case 'macbook-13':\n    cy.get('.pagination').should('exist');\n    cy.get('.rechercher').should('be.visible');\n    break;\n  case 'macbook-15':\n    cy.get('#conteneurSection').should('exist');\n    cy.get('#logo').should('be.visible');\n    break;\n  default:\n    // Default assertions\n    break;\n}",
+              "err": {},
+              "uuid": "1378d883-a562-4905-8cb3-1c6a1ef0ea5b",
+              "parentUUID": "9ff4e182-c902-48c5-ac49-62b68eaa1c70",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d45924ca-3426-464b-bb4f-536850129e20",
+            "1378d883-a562-4905-8cb3-1c6a1ef0ea5b"
+          ],
+          "failures": [
+            "8511ca5a-bbb4-4202-8583-5c34b0d03948",
+            "301e77fc-f8ab-46a3-bf77-a363c24affc2"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 9259,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "test-results/mochawesome",
+        "overwrite": true,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-12-02T15:48:14.288Z",
+    "end": "2023-12-02T15:48:20.907Z",
+    "duration": 6619,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1d15a483-ed38-49d7-867b-a39208ef967e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\front.cy.js",
+      "file": "cypress\\e2e\\front.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a6beaa37-090e-4cec-a2b8-eee4f3d0144d",
+          "title": "Affichage de la page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Element titre et sous titre doivent s'afficher correctement",
+              "fullTitle": "Affichage de la page Element titre et sous titre doivent s'afficher correctement",
+              "timedOut": null,
+              "duration": 2943,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Vérifier la présence du titre et sous-titre\ncy.get('h2').should('contain', 'Liste des voitures en stock');\ncy.get('p').should('contain', 'Cette page recence les voitues disponibles dans la base');",
+              "err": {},
+              "uuid": "08cd8b79-06a2-4ea2-a9db-85e79e4f8857",
+              "parentUUID": "a6beaa37-090e-4cec-a2b8-eee4f3d0144d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Le bouton \"Ajouter voiture\" doit être clickable et afficher le formulaire de nouvelle voiture",
+              "fullTitle": "Affichage de la page Le bouton \"Ajouter voiture\" doit être clickable et afficher le formulaire de nouvelle voiture",
+              "timedOut": null,
+              "duration": 224,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Clique sur le lien du formulaire\ncy.contains('Ajouter une voiture').click();\n// Vérifie que la liste\ncy.get('form').should('be.visible');",
+              "err": {},
+              "uuid": "46377ec3-af18-4416-ba79-8cda3e08f8fe",
+              "parentUUID": "a6beaa37-090e-4cec-a2b8-eee4f3d0144d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Lancement recherche",
+              "fullTitle": "Affichage de la page Lancement recherche",
+              "timedOut": null,
+              "duration": 546,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Faire une recherche\ncy.get('#saisieRecherche').type('Nom de la voiture');\n// Cliquez sur le bouton de recherche\ncy.get('.rechercher').click();",
+              "err": {},
+              "uuid": "8ad758bb-64d3-459b-93e1-3390c9d9770d",
+              "parentUUID": "a6beaa37-090e-4cec-a2b8-eee4f3d0144d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Le bouton page précédente doit etre clickable",
+              "fullTitle": "Affichage de la page Le bouton page précédente doit etre clickable",
+              "timedOut": null,
+              "duration": 149,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.pagination .button.previous').click();",
+              "err": {},
+              "uuid": "a3586fbe-0be1-428a-b0bb-597b7155d132",
+              "parentUUID": "a6beaa37-090e-4cec-a2b8-eee4f3d0144d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Le bouton page suivante doit etre clickable",
+              "fullTitle": "Affichage de la page Le bouton page suivante doit etre clickable",
+              "timedOut": null,
+              "duration": 170,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.pagination .button.next').click();",
+              "err": {},
+              "uuid": "0195d736-4f11-47f4-b4ad-1dce0e255ee9",
+              "parentUUID": "a6beaa37-090e-4cec-a2b8-eee4f3d0144d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Le logo doit être présent",
+              "fullTitle": "Affichage de la page Le logo doit être présent",
+              "timedOut": null,
+              "duration": 90,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#logo').should('exist');\ncy.get('#logo img').should('have.attr', 'src', 'logo.jpg');",
+              "err": {},
+              "uuid": "cad157e4-a839-45a8-b239-bddb1c175e92",
+              "parentUUID": "a6beaa37-090e-4cec-a2b8-eee4f3d0144d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Le menu acceuil doit être clickable et envoyer vers la page acceuil",
+              "fullTitle": "Affichage de la page Le menu acceuil doit être clickable et envoyer vers la page acceuil",
+              "timedOut": null,
+              "duration": 168,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.contains('Accueil').click();\ncy.url().should('include', '/#');",
+              "err": {},
+              "uuid": "fff2ae33-2112-469d-b078-09ee6e543f85",
+              "parentUUID": "a6beaa37-090e-4cec-a2b8-eee4f3d0144d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "08cd8b79-06a2-4ea2-a9db-85e79e4f8857",
+            "46377ec3-af18-4416-ba79-8cda3e08f8fe",
+            "8ad758bb-64d3-459b-93e1-3390c9d9770d",
+            "a3586fbe-0be1-428a-b0bb-597b7155d132",
+            "0195d736-4f11-47f4-b4ad-1dce0e255ee9",
+            "cad157e4-a839-45a8-b239-bddb1c175e92",
+            "fff2ae33-2112-469d-b078-09ee6e543f85"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4290,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "test-results/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
