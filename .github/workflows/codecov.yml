@@ -1,4 +1,4 @@
-name: codecov
+name: Tests
 on:
   push:
     branches:
@@ -17,11 +17,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests and generate coverage
+      - name: Run units tests and generate coverage
         run: npx nyc mocha
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          coverageReports: QA_Front/mochawesome-report/mochawesomeunit.json
+      - name: Run cypress test, integration and UI
+        run: npx cypress run 
