@@ -42,7 +42,7 @@ describe('Tests d\'intégration', () => {
   it('Affiche correctement le tableau avec les données reçues de l\'API', () => {
     cy.intercept('GET', config.urlBack + '/voiture/get/all/0/5', { fixture: 'voitures.json' }).as('getVoitures');
     
-    cy.visit('http://localhost:8080/esieaFront/');
+    cy.visit('https://cours-qualite.groupe-esiea.fr/esieaFront/');
     cy.wait('@getVoitures').then(() => {
       // Vérification que le tableau est affiché avec les bonnes données après le premier chargement
       cy.get('#listeVoitureTable').should('exist');
@@ -51,7 +51,7 @@ describe('Tests d\'intégration', () => {
       
   
       // Visite de nouveau la même URL
-      cy.visit('http://localhost:8080/esieaFront/');
+      cy.visit('https://cours-qualite.groupe-esiea.fr/esieaFront/');
       cy.wait('@getVoitures').then(() => {
         // Vérification que le tableau est affiché avec les bonnes données après le deuxième chargement
         cy.get('#listeVoitureTable').should('exist');
@@ -63,7 +63,7 @@ describe('Tests d\'intégration', () => {
   });
 
   it('Effectue une recherche de voitures', () => {
-    cy.visit('http://localhost:8080/esieaFront/');
+    cy.visit('https://cours-qualite.groupe-esiea.fr/esieaFront/');
     
     // Scroll vers le champ de saisie de recherche
     cy.get('#saisieRecherche').scrollIntoView().type('to');
@@ -76,7 +76,7 @@ describe('Tests d\'intégration', () => {
 
   it('Ajout d\'une voiture via l\'interface', () => {
     // Se rendre sur la page d'accueil
-    cy.visit('http://localhost:8080/esieaFront/');
+    cy.visit('https://cours-qualite.groupe-esiea.fr/esieaFront/');
     
     cy.window().then((win) => {
       win.afficherFormulaireCreation();
@@ -122,7 +122,7 @@ describe('Tests d\'intégration', () => {
 
 
   it('Supprime une voiture de la liste', () => {
-    cy.visit('http://localhost:8080/esieaFront/');
+    cy.visit('https://cours-qualite.groupe-esiea.fr/esieaFront/');
 
     cy.get('#saisieRecherche').scrollIntoView().type(timestamp);
 
