@@ -5,7 +5,7 @@ describe('template spec', () => {
 })
 describe('UTF-8 Encoding Test', () => {
   it('Verifies page content is UTF-8 encoded', () => {
-    cy.visit('https://cours-qualite.groupe-esiea.fr/esieaFront/') // Replace with the URL of the page you want to test
+    cy.visit('https://cours-qualite.groupe-esiea.fr/esieaFront/') 
 
     cy.document().then((doc) => {
       const textContent = doc.body.innerText
@@ -26,7 +26,7 @@ describe('UTF-8 Encoding Test', () => {
 describe('Car Management Application E2E Tests', () => {
   beforeEach(() => {
     cy.viewport(1800, 800)
-    cy.visit('http://cours-qualite.groupe-esiea.fr/esieaFront/') // Replace with the path to your HTML file
+    cy.visit('http://cours-qualite.groupe-esiea.fr/esieaFront/') 
   })
 
   it('Loads the application', () => {
