@@ -21,4 +21,4 @@ jobs:
         run: npx nyc mocha
 
       - name: Run cypress test, integration and UI
-        run: npx cypress run --spec "cypress/e2e/integration.js"
+        run: npx cypress run --spec "cypress/e2e/integration.cy.js"
